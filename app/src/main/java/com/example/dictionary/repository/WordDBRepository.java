@@ -2,9 +2,7 @@ package com.example.dictionary.repository;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.room.Room;
-import androidx.room.RoomDatabase;
 
 import com.example.dictionary.dataBase.WordDAO;
 import com.example.dictionary.dataBase.WordDB;
@@ -43,6 +41,7 @@ public class WordDBRepository implements IRepository{
 
     }
 
+
     @Override
     public void updateWord(Word word) {
         mWordDAO.updateWord(word);
@@ -56,5 +55,10 @@ public class WordDBRepository implements IRepository{
     @Override
     public void insertWords(Word... words) {
         mWordDAO.insertWords(words);
+    }
+
+    @Override
+    public List<Word> searchWords(String string) {
+     return    mWordDAO.searchWord(string);
     }
 }

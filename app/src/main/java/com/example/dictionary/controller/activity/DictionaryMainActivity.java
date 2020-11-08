@@ -8,16 +8,16 @@ import android.os.Bundle;
 
 import com.example.dictionary.R;
 import com.example.dictionary.controller.CallBack;
-import com.example.dictionary.controller.fragment.DictionaryMainFragment;
+import com.example.dictionary.controller.fragment.WordListFragment;
 
-public class DictionaryMainActivity extends AppCompatActivity implements CallBack {
-    private DictionaryMainFragment mDictionaryMainFragment;
+public class DictionaryMainActivity extends AppCompatActivity {
+    private WordListFragment mDictionaryMainFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
-       mDictionaryMainFragment=DictionaryMainFragment.newInstance();
+       mDictionaryMainFragment= WordListFragment.newInstance();
         FragmentManager fragmentManager=getSupportFragmentManager();
         Fragment fragment=fragmentManager.findFragmentById(R.id.container_activity);
         if (fragment==null) {
@@ -26,8 +26,4 @@ public class DictionaryMainActivity extends AppCompatActivity implements CallBac
         }
     }
 
-    @Override
-    public void onListUpdate() {
-        mDictionaryMainFragment.updateUI();
-    }
 }

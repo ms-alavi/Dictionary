@@ -8,4 +8,7 @@
     <string name="add">add</string>
     <string name="emtyEdt">This field should not be empty</string>
     <string name="emtyEdtPer">این فیلد نباید خالی باشد.</string>
+    <string name="edit">edit</string>
+    <string name="delete">delete</string>
+    <string name="search">Search</string>
 </resources>

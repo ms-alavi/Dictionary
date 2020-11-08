@@ -31,5 +31,7 @@ public interface WordDAO {
 
     @Query("SELECT * FROM wordTable WHERE wordId=:id")
     Word getWord(Long id);
+    @Query("SELECT * FROM wordTable WHERE english LIKE :string OR persian LIKE :string " )
+    List<Word> searchWord(String string);
 
 }

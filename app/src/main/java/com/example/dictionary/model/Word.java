@@ -4,8 +4,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "wordTable")
-public class Word {
+public class Word implements Serializable {
     @ColumnInfo(name = "wordId")@PrimaryKey(autoGenerate = true)
     private Long mId;
     @ColumnInfo(name = "english")

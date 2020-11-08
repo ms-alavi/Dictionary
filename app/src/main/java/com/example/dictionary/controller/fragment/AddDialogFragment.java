@@ -1,15 +1,19 @@
 package com.example.dictionary.controller.fragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 
+import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -22,8 +26,11 @@ import com.example.dictionary.controller.CallBack;
 import com.example.dictionary.model.Word;
 import com.example.dictionary.repository.WordDBRepository;
 
+import java.util.Date;
 
-public class AddDialogFragment extends DialogFragment {
+
+public class AddDialogFragment extends DialogFragment  {
+    public static final String EXTRA_WORD = "com.example.dictionary.controller.fragment.extraWord";
     private EditText mEdtEnglish,mEdtPersian;
     private Button mButtonAdd;
     private Word mWord;
@@ -121,7 +128,7 @@ public class AddDialogFragment extends DialogFragment {
                     }
                 }else {
                     mWordDBRepository.insertWord(mWord);
-                    mCallBack.onListUpdate();
+                    sendResult();
                     dismiss();
                 }
 
@@ -146,5 +153,13 @@ public class AddDialogFragment extends DialogFragment {
         mEdtEnglish=view.findViewById(R.id.edt_add_english);
         mEdtPersian=view.findViewById(R.id.edt_add_persian);
         mButtonAdd=view.findViewById(R.id.btn_add_add);
+    }
+    private void sendResult() {
+        Fragment fragment = getTargetFragment();
+
+        int requestCode = getTargetRequestCode();
+        int resultCode = Activity.RESULT_OK;
+        Intent intent = new Intent();
+        fragment.onActivityResult(requestCode, resultCode, intent);
     }
 }

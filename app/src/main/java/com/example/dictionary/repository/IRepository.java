@@ -11,4 +11,5 @@ public interface IRepository {
     void updateWord(Word word);
     void insertWord(Word word);
     void insertWords(Word... words);
+    List<Word> searchWords(String string);
 }
